@@ -33,5 +33,43 @@ declare module jsbn {
         mod(a: BigInteger): BigInteger;
         modPowInt(e: number, m: BigInteger): BigInteger;
 
+    }
+
+    interface Reduction {
+        convert(x: BigInteger): BigInteger;
+        revert(x: BigInteger): BigInteger;
+        reduce(x: BigInteger): void;
+        mulTo(x: BigInteger, y: BigInteger, r: BigInteger): void;
+        sqrTo(x: BigInteger, r: BigInteger): void;
+    }
+
+    interface ReductionFactory<T extends Reduction> {
+        new (m: BigInteger): T;
+    }
+
+    interface Classic extends Reduction {
+    }
+
+    interface ClassicFactory extends ReductionFactory<Classic> {
+    }
+
+    interface Montgomery extends Reduction {
+    }
+
+    interface MontgomeryFactory extends ReductionFactory<Montgomery> {
+    }
+
+    interface NullExp extends Reduction {
+    }
+
+    interface NullExpFactory extends ReductionFactory<NullExp> {
+    }
+
+    interface Barrett extends Reduction {
+    }
+
+    interface BarrettFactory extends ReductionFactory<Barrett> {
+    }
+
 
 }
