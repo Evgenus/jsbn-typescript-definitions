@@ -1,7 +1,18 @@
 declare module jsbn {
+
+    interface RandomGenerator {
+        nextBytes(bytes: number[]);
+    }
+
     export class BigInteger {
-        constructor(a: number, b?: number, c?: number);
+        constructor(a: number, c: RandomGenerator);
+        constructor(a: number, b: number, c: RandomGenerator);
         constructor(a: string, b?: number);
+        constructor(a: number[], b?: number);
+
+        s: number;
+        t: number;
+        data: number[]; // forge specific
 
         DB: number;
         DM: number;
@@ -27,7 +38,7 @@ declare module jsbn {
         clamp(): void;
 
         // (public) return string representation in given radix
-        toString(b: number): string;
+        toString(b?: number): string;
 
         // (public) -this
         negate(): BigInteger;
