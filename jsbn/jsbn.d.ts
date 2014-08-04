@@ -1,3 +1,8 @@
+// Type definitions for sjcl v1.2
+// Project: http://www-cs-students.stanford.edu/%7Etjw/jsbn/
+// Definitions by: Eugene Chernyshov <https://github.com/Evgenus>
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
+
 declare module jsbn {
 
     interface RandomGenerator {
