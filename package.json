@@ -1,0 +1,28 @@
+{
+  "name": "jsbn-typescript-definitions",
+  "version": "1.2.0-1",
+  "description": "Typescript definitions files for Big Integer library by Tom Wu",
+  "scripts": {
+    "test": "tsc --noImplicitAny --outDir temp --module commonjs jsbn/jsbn-tests.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Evgenus/jsbn-typescript-definitions"
+  },
+  "keywords": [
+    "bigint",
+    "bignum",
+    "jsbn",
+    "typescript",
+    "definitions"
+  ],
+  "author": "Eugene Chernyshov <chernyshov.eugene@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Evgenus/jsbn-typescript-definitions/issues"
+  },
+  "homepage": "https://github.com/Evgenus/jsbn-typescript-definitions",
+  "devDependencies": {
+    "typescript": "^1.0.1"
+  }
+}
