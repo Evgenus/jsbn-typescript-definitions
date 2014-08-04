@@ -1,7 +1,7 @@
 declare module jsbn {
 
     interface RandomGenerator {
-        nextBytes(bytes: number[]);
+        nextBytes(bytes: number[]): void;
     }
 
     export class BigInteger {
@@ -130,7 +130,7 @@ declare module jsbn {
         max(a: BigInteger): BigInteger;
 
         // (protected) r = this op a (bitwise)
-        bitwiseTo(a: BigInteger, op: (x: number, y: number) => number, r: BigInteger);
+        bitwiseTo(a: BigInteger, op: (x: number, y: number) => number, r: BigInteger): void;
 
         // (public) this & a
         and(a: BigInteger): BigInteger;
