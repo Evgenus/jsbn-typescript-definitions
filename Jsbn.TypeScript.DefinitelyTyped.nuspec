@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Jsbn.TypeScript.DefinitelyTyped</id>
-    <version>1.2.0-1</version>
+    <version>1.2.0.1</version>
     <authors>Evgenus</authors>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/Evgenus/jsbn-typescript-definitions</projectUrl>
