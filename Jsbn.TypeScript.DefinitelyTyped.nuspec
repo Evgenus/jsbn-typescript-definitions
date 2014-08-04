@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Jsbn.TypeScript.DefinitelyTyped</id>
+    <version>1.2.0-1</version>
+    <authors>Evgenus</authors>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/Evgenus/jsbn-typescript-definitions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Typescript definitions files for Big Integer library by Tom Wu</description>
+    <releaseNotes>Initial publishing</releaseNotes>
+    <tags>bigint bignum jsbn typesctipt definitions</tags>
+  </metadata>
+  <files>
+    <file src="README.md" target="" />
+    <file src="jsbn\*.ts" target="src" />
+  </files>
+</package>
