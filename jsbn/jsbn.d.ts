@@ -9,6 +9,7 @@ declare module jsbn {
         constructor(a: number, b: number, c: RandomGenerator);
         constructor(a: string, b?: number);
         constructor(a: number[], b?: number);
+        constructor(a: BigInteger);
 
         s: number;
         t: number;
