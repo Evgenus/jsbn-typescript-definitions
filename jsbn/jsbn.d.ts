@@ -3,6 +3,9 @@
 // Definitions by: Eugene Chernyshov <https://github.com/Evgenus>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
+// Development repository: https://github.com/Evgenus/jsbn-typescript-definitions
+// For answers, fixes and cutting edge version please see development repository.
+
 declare module jsbn {
 
     interface RandomGenerator {
