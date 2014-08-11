@@ -6,6 +6,9 @@
 // Development repository: https://github.com/Evgenus/jsbn-typescript-definitions
 // For answers, fixes and cutting edge version please see development repository.
 
+/**
+ * Basic JavaScript BN library - subset useful for RSA encryption.
+ */
 declare module jsbn {
 
     interface RandomGenerator {
@@ -13,13 +16,66 @@ declare module jsbn {
     }
 
     export class BigInteger {
+
+        /**
+         * Constructs new BigInteger with random value
+         * 
+         * @constructor implements new interface.
+         *
+         * @param {number} a          Bit length as number.
+         * @param {RandomGenerator} c The random number generator.
+         */
         constructor(a: number, c: RandomGenerator);
+
+        /**
+         * Constructs new BigInteger with random possible prime value.
+         * 
+         * @constructor implements new interface
+         * @private Used inside some version of MillerRabin.
+         *
+         * @param {number} a          Bit length as number.
+         * @param {number} b          The number coefficient of certainty.
+         * @param {RandomGenerator} c The random number generator.
+         */
         constructor(a: number, b: number, c: RandomGenerator);
-        constructor(a: string, b?: number);
+
+        /**
+         * Constructs new BigInteger from string representation.
+         * 
+         * @constructor imlements new interface.
+         *
+         * @param {string} a The string representation of BigInteger.
+         * @param {number} b (Optional) the radix.
+         */
+        constructor(a: string, b?: number); //TODO
+
+        /**
+         * Constructs new BigInteger from bytes
+         * 
+         * @constructor implements new interface.
+         *
+         * @param {number[]} a Array of bytes.
+         * @param {number} b   (Optional) the radix.
+         */
         constructor(a: number[], b?: number);
+
+        /**
+         * Constructs new BigInteger as a copy of existing BigInteger.
+         * 
+         * @constructor implements new interface.
+         *
+         * @param {BigInteger} a The BigInteger to copy.
+         */
         constructor(a: BigInteger);
 
+        /**
+         * The sign number.
+         */
         s: number;
+
+        /**
+         * The length number.
+         */
         t: number;
         data: number[]; // forge specific
 
