@@ -93,113 +93,177 @@ declare module jsbn {
         am(i: number, x: number, w: BigInteger, j: number, c: number, n: number): number;
 
         /**
-         * (protected) copy this to r
+         * (protected) copy this to r.
+         *
+         * @param {BigInteger} r The destination BigInteger instance.
          */
         copyTo(r: BigInteger): void;
 
         /**
-         * (protected) set from integer value x, -DV <= x < DV
+         * (protected) set from integer value x, -DV <= x < DV.
+         *
+         * @param {number} x The source number.
          */
         fromInt(x: number): void;
 
         /**
-         * (protected) set from string and radix
+         * (protected) set from string and radix.
+         *
+         * @param {string} x The string representation of BigInteger.
+         * @param {number} b The radix.
          */
         fromString(x: string, b: number): void;
 
         /**
-         * (protected) clamp off excess high words
+         * (protected) clamp off excess high words.
          */
         clamp(): void;
 
         /**
-         * (public) @return string representation in given radix
+         * (public) return string representation in given radix.
+         *
+         * @param {number} b (Optional) the radix.
+         *
+         * @return {string} A string that represents this object.
          */
         toString(b?: number): string;
 
         /**
-         * (public) -this
+         * (public) -this.
+         *
+         * @return {BigInteger} A new negated BigInteger.
          */
         negate(): BigInteger;
 
         /**
-         * (public) |this|
+         * (public) |this|.
+         *
+         * @return {BigInteger} A new BigInteger that equals to absolute value of this.
          */
         abs(): BigInteger;
 
         /**
-         * (public) return + if this > a, - if this < a, 0 if equal
+         * (public) return + if this > a, - if this < a, 0 if equal.
+         *
+         * @param {BigInteger} a BigInteger to compare to this.
+         *
+         * @return {number} Negative if this object is less than the other, 0 if they are equal, or
+         *         positive if this is greater.
          */
         compareTo(a: BigInteger): number;
 
         /**
-         * (public) return the number of bits in "this"
+         * (public) return the number of bits in "this".
+         *
+         * @return {number} A length of this BigInteger in bits.
          */
         bitLength(): number;
 
         /**
-         * (protected) r = this << n*DB
+         * (protected) r = this << n*DB.
+         *
+         * @param {number} n     The number of shift amount.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         dlShiftTo(n: number, r: BigInteger): void;
 
         /**
-         * (protected) r = this >> n*DB
+         * (protected) r = this >> n*DB.
+         *
+         * @param {number} n     The number of shift amount.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         drShiftTo(n: number, r: BigInteger): void;
 
         /**
-         * (protected) r = this << n
+         * (protected) r = this << n.
+         *
+         * @param {number} n     The number of shift amount.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         lShiftTo(n: number, r: BigInteger): void;
 
         /**
-         * (protected) r = this >> n
+         * (protected) r = this >> n.
+         *
+         * @param {number} n     The number of shift amount.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         rShiftTo(n: number, r: BigInteger): void;
 
         /**
-         * (protected) r = this - a
+         * (protected) r = this - a.
+         *
+         * @param {BigInteger} a The subtrahend BigInteger.
+         * @param {BigInteger} r The destination BigInteger to store difference.
          */
         subTo(a: BigInteger, r: BigInteger): void;
 
         /**
          * (protected) r = this * a, r != this,a (HAC 14.12)
+         *
+         * @param {BigInteger} a The multiplier BigInteger.
+         * @param {BigInteger} r The destination BigInteger to store product.
          */
         multiplyTo(a: BigInteger, r: BigInteger): void;
 
         /**
          * (protected) r = this^2, r != this (HAC 14.16)
+         *
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         squareTo(r: BigInteger): void;
 
         /**
          * (protected) divide this by m, quotient and remainder to q, r (HAC 14.20)
          * r != q, this != m.  q or r may be null.
+         *
+         * @param {BigInteger} m The divisor BigInteger.
+         * @param {?BigInteger} q The destination BigInteger to store quotient.
+         * @param {?BigInteger} r The destination BigInteger to store remainder.
          */
         divRemTo(m: BigInteger, q: BigInteger, r: BigInteger): void;
 
         /**
-         * (public) this mod a
+         * (public) this mod a.
+         *
+         * @param {BigInteger} a The divisor BigInteger.
+         *
+         * @return {BigInteger} A new BigInteger equals to remainder.
          */
         mod(a: BigInteger): BigInteger;
 
         /**
-         * (protected) return "-1/this % 2^DB"; useful for Mont. reduction
+         * (protected) return "-1/this % 2^DB"; useful for Mont. reduction.
+         *
+         * @return A number.
          */
         invDigit(): number;
 
         /**
-         * (protected) true iff this is even
+         * (protected) true if this is even.
+         *
+         * @return true if even, false if not.
          */
         isEven(): boolean;
 
         /**
          * (protected) this^e, e < 2^32, doing sqr and mul with "r" (HAC 14.79)
+         *
+         * @param {number} e    The exponent.
+         * @param {Reduction} z The Reduction.
+         *
+         * @return {BigInteger} A new BigInteger equals to power.
          */
         exp(e: number, z: Reduction): BigInteger;
 
         /**
-         * (public) this^e % m, 0 <= e < 2^32
+         * (public) this^e % m, 0 <= e < 2^32.
+         *
+         * @param {number} e     The exponent.
+         * @param {BigInteger} m The divisor BigInteger.
+         *
+         * @return The new BigInteger equals to remainder.
          */
         modPowInt(e: number, m: BigInteger): BigInteger;
 
