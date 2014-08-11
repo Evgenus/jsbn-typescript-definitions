@@ -236,14 +236,14 @@ declare module jsbn {
         /**
          * (protected) return "-1/this % 2^DB"; useful for Mont. reduction.
          *
-         * @return A number.
+         * @return {number}
          */
         invDigit(): number;
 
         /**
          * (protected) true if this is even.
          *
-         * @return true if even, false if not.
+         * @return {boolean} true if even, false if not.
          */
         isEven(): boolean;
 
@@ -263,68 +263,121 @@ declare module jsbn {
          * @param {number} e     The exponent.
          * @param {BigInteger} m The divisor BigInteger.
          *
-         * @return The new BigInteger equals to remainder.
+         * @return {BigInteger} The new BigInteger equals to remainder.
          */
         modPowInt(e: number, m: BigInteger): BigInteger;
 
         /**
          * (public)
+         *
+         * @return {BigInteger} A copy of this object.
          */
         clone(): BigInteger;
 
         /**
-         * (public) return value as integer
+         * (public) return value as integer.
+         *
+         * @return {number}
          */
         intValue(): number;
 
         /**
-         * (public) return value as byte
+         * (public) return value as byte.
+         *
+         * @return {number}
          */
         byteValue(): number;
 
         /**
          * (public) return value as short (assumes DB>=16)
+         *
+         * @return {number}
          */
         shortValue(): number;
 
         /**
-         * (protected) return x s.t. r^x < DV
+         * (protected) return x s.t. r^x < DV.
+         *
+         * @param {number} r The number to process.
+         *
+         * @return {number}
          */
         chunkSize(r: number): number;
 
         /**
-         * (public) 0 if this == 0, 1 if this > 0
+         * (public) 0 if this == 0, 1 if this > 0.
+         *
+         * @return {number}.
          */
         signum(): number;
 
         /**
-         * (protected) convert to radix string
+         * (protected) convert to radix string.
+         *
+         * @param {number} b The radix.
+         *
+         * @return {string} string representation accordingly to radix.
          */
         toRadix(b: number): string;
 
         /**
-         * (protected) convert from radix string
+         * (protected) convert from radix string.
+         *
+         * @param {string} s  The string representation of BigInteger.
+         * @param {?number} b The radix.
          */
         fromRadix(s: string, b: number): void;
 
         /**
-         * (protected) alternate constructor
+         * (protected) alternate constructor.
          */
-        fromNumber(a: number, b?: number, c?: number): void;
+        fromNumber(a: number, b: RandomGenerator): void;
 
         /**
-         * (public) convert to bigendian byte array
+         * (protected) alternate constructor.
+         */
+        fromNumber(a: number, b: number, c: RandomGenerator): void;
+
+        /**
+         * (public) convert to bigendian byte array.
+         *
+         * @return {numer[]} This object as Array.
          */
         toByteArray(): number[];
 
+        /**
+         * Tests if this BigInteger is considered equal to another.
+         *
+         * @param {BigInteger} a The BigInteger to compare to this object.
+         *
+         * @return {boolean} true if the objects are considered equal, false if they are not.
+         */
         equals(a: BigInteger): boolean;
 
+        /**
+         * Determines the minimum among this and given parameters.
+         *
+         * @param {BigInteger} a The BigInteger to compare to this object.
+         *
+         * @return {BigInteger} The minimum value.
+         */
         min(a: BigInteger): BigInteger;
 
+        /**
+         * Determines the maximum among this and given parameters.
+         *
+         * @param {BigInteger} a The BigInteger to compare to this object.
+         *
+         * @return {BigInteger} The maximum value.
+         */
         max(a: BigInteger): BigInteger;
 
         /**
          * (protected) r = this op a (bitwise)
+         *
+         * @param {BigInteger} a  The BigInteger to process.
+         * @param {Function} op   bitwise operation function to apply.
+         * @param {BigInteger} r  The destination BigInteger to store result.
          */
         bitwiseTo(a: BigInteger, op: (x: number, y: number) => number, r: BigInteger): void;
 
