@@ -1,6 +1,12 @@
 /// <reference path="jsbn.d.ts" />
 var BigInteger = jsbn.BigInteger;
 
+var RND = {
+    nextBytes: function () {
+        return [1, 2, 3];
+    }
+};
+
 // constructor tests
 var x = new BigInteger("AABB", 16);
 x = new BigInteger("75643564363473453456342378564387956906736546456235345");
@@ -50,9 +56,8 @@ isNumber = x.chunkSize(0);
 isNumber = x.signum();
 isString = x.toRadix(10);
 x.fromRadix("123", 10);
-x.fromNumber(1);
-x.fromNumber(1, 2);
-x.fromNumber(1, 2, 3);
+x.fromNumber(1, RND);
+x.fromNumber(1, 2, RND);
 isByteArray = x.toByteArray();
 isBoolean = x.equals(x);
 isBigInteger = x.min(x);
