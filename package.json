@@ -1,6 +1,6 @@
 {
   "name": "jsbn-typescript-definitions",
-  "version": "1.2.0-1",
+  "version": "1.2.0-2",
   "description": "Typescript definitions files for Big Integer library by Tom Wu",
   "scripts": {
     "test": "tsc --noImplicitAny --outDir temp --module commonjs jsbn/jsbn-tests.ts"
