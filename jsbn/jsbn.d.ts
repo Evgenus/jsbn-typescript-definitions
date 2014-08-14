@@ -42,7 +42,7 @@ declare module jsbn {
         /**
          * Constructs new BigInteger from string representation.
          * 
-         * @constructor imlements new interface.
+         * @constructor implements new interface.
          *
          * @param {string} a The string representation of BigInteger.
          * @param {number} b (Optional) the radix.
@@ -452,7 +452,7 @@ declare module jsbn {
         /**
          * (public) returns index of lowest 1-bit (or -1 if none)
          *
-         * @return The lowest set bit.
+         * @return {number} The lowest set bit.
          */
         getLowestSetBit(): number;
 
@@ -510,101 +510,179 @@ declare module jsbn {
         flipBit(n: number): BigInteger;
 
         /**
-         * (protected) r = this + a
+         * (protected) r = this + a.
+         *
+         * @param {BigInteger} a The BigInteger addend.
+         * @param {BigInteger} r The destination BigInteger to store sum.
          */
         addTo(a: BigInteger, r: BigInteger): void;
 
         /**
-         * (public) this + a
+         * (public) this + a.
+         *
+         * @param {BigInteger} a The BigInteger addend.
+         *
+         * @return {BigInteger} A sum as BigInteger.
          */
         add(a: BigInteger): BigInteger;
 
         /**
-         * (public) this - a
+         * (public) this - a.
+         *
+         * @param {BigInteger} a The BigInteger subtrahend.
+         *
+         * @return {BigInteger} A difference as BigInteger.
          */
         subtract(a: BigInteger): BigInteger;
 
         /**
-         * (public) this * a
+         * (public) this * a.
+         *
+         * @param {BigInteger} a The BigInteger multiplier.
+         *
+         * @return {BigInteger} A product as BigInteger.
          */
         multiply(a: BigInteger): BigInteger;
 
         /**
-         * (public) this^2
+         * (public) this^2.
+         *
+         * @return {BigInteger} A square as BigInteger.
          */
         square(): BigInteger;
 
         /**
-         * (public) this / a
+         * (public) this / a.
+         *
+         * @param {BigInteger} a The BigInteger divisor.
+         *
+         * @return {BigInteger} A quotient as BigInteger.
          */
         divide(a: BigInteger): BigInteger;
 
         /**
-         * (public) this % a
+         * (public) this % a.
+         *
+         * @param {BigInteger} a The BigInteger divisor.
+         *
+         * @return {BigInteger} A remainder as BigInteger.
          */
         remainder(a: BigInteger): BigInteger;
 
         /**
-         * (public) [this/a,this%a]
+         * (public) [this/a,this%a].
+         *
+         * @param {BigInteger} a The BigInteger divisor.
+         *
+         * @return A tuple of 2 BigIntegers: quotient and remainder.
          */
         divideAndRemainder(a: BigInteger): BigInteger[]; // Array of 2 items
 
         /**
-         * (protected) this *= n, this >= 0, 1 < n < DV
+         * (protected) this *= n, this >= 0, 1 < n < DV.
+         *
+         * @param {number} n The multiplier number.
          */
         dMultiply(n: number): void;
 
         /**
-         * (protected) this += n << w words, this >= 0
+         * (protected) this += n << w words, this >= 0.
+         *
+         * @param {number} n The number to process.
+         * @param {number} w The number to process.
          */
         dAddOffset(n: number, w: number): void;
 
         /**
-         * (public) this^e
+         * (public) this^e.
+         *
+         * @param {number} e The exponent.
+         *
+         * @return {BigInteger} A result BigInteger.
          */
         pow(e: number): BigInteger;
 
         /**
-         * (protected) r = lower n words of "this * a", a.t <= n
+         * (protected) r = lower n words of "this * a", a.t <= n.
+         *
+         * @param {BigInteger} a The BigInteger multiplier.
+         * @param {number} n     The number of words.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         multiplyLowerTo(a: BigInteger, n: number, r: BigInteger): void;
 
         /**
-         * (protected) r = "this * a" without lower n words, n > 0
+         * (protected) r = "this * a" without lower n words, n > 0.
+         *
+         * @param {BigInteger} a The BigInteger multiplier.
+         * @param {number} n     The number of words.
+         * @param {BigInteger} r The destination BigInteger to store result.
          */
         multiplyUpperTo(a: BigInteger, n: number, r: BigInteger): void;
 
         /**
          * (public) this^e % m (HAC 14.85)
+         *
+         * @param {BigInteger} e The BigInteger exponent.
+         * @param {BigInteger} m The BigInteger divisor.
+         *
+         * @return {BigInteger} A remainder as BigInteger.
          */
         modPow(e: BigInteger, m: BigInteger): BigInteger;
 
         /**
          * (public) gcd(this,a) (HAC 14.54)
+         *
+         * @param {BigInteger} a The BigInteger to process.
+         *
+         * @return {BigInteger} A greatest common divisor BigInteger.
          */
         gcd(a: BigInteger): BigInteger;
 
         /**
-         * (protected) this % n, n < 2^26
+         * (protected) this % n, n < 2^26.
+         *
+         * @param {number} n The number divisor.
+         *
+         * @return {number} A remainder number.
          */
         modInt(n: number): number;
 
         /**
          * (public) 1/this % m (HAC 14.61)
+         *
+         * @param {BigInteger} m The BigInteger divisor.
+         *
+         * @return {BigInteger} A remainder as BigInteger.
          */
         modInverse(m: BigInteger): BigInteger;
 
         /**
-         * (public) test primality with certainty >= 1-.5^t
+         * (public) test primality with certainty >= 1-.5^t.
+         *
+         * @param {number} t The certainty coefficient.
+         *
+         * @return {boolean} true if probable prime, false if not.
          */
         isProbablePrime(t: number): boolean;
 
         /**
          * (protected) true if probably prime (HAC 4.24, Miller-Rabin)
+         *
+         * @param {number} t The number to process.
+         *
+         * @return {boolean} true if it succeeds, false if it fails.
          */
         millerRabin(t: number): boolean;
 
+        /**
+         * The zero.
+         */
         static ZERO: BigInteger;
+
+        /**
+         * The one.
+         */
         static ONE: BigInteger;
     }
 
