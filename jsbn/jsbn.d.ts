@@ -330,18 +330,25 @@ declare module jsbn {
 
         /**
          * (protected) alternate constructor.
+         *
+         * @param {number} a          The number of bits.
+         * @param {RandomGenerator} b The random number generator.
          */
         fromNumber(a: number, b: RandomGenerator): void;
 
         /**
          * (protected) alternate constructor.
+         *
+         * @param {number} a          The number of bits.
+         * @param {number} b          The number coefficient of certainty.
+         * @param {RandomGenerator} c The random number generator.
          */
         fromNumber(a: number, b: number, c: RandomGenerator): void;
 
         /**
          * (public) convert to bigendian byte array.
          *
-         * @return {numer[]} This object as Array.
+         * @return {number[]} This object as Array.
          */
         toByteArray(): number[];
 
@@ -382,74 +389,125 @@ declare module jsbn {
         bitwiseTo(a: BigInteger, op: (x: number, y: number) => number, r: BigInteger): void;
 
         /**
-         * (public) this & a
+         * (public) this & a.
+         *
+         * @param {BigInteger} a The second argument as BigInteger.
+         *
+         * @return {BigInteger} A BigInteger result of bitwise AND operation.
          */
         and(a: BigInteger): BigInteger;
 
         /**
-         * (public) this | a
+         * (public) this | a.
+         *
+         * @param {BigInteger} a The second argument as BigInteger.
+         *
+         * @return {BigInteger}  A BigInteger result of bitwise OR operation.
          */
         or(a: BigInteger): BigInteger;
 
         /**
-         * (public) this ^ a
+         * (public) this ^ a.
+         *
+         * @param {BigInteger} a The second argument as BigInteger.
+         *
+         * @return {BigInteger} A BigInteger result of bitwise XOR operation.
          */
         xor(a: BigInteger): BigInteger;
 
         /**
-         * (public) this & ~a
+         * (public) this & ~a.
+         *
+         * @param {BigInteger} a The second argument as BigInteger.
+         *
+         * @return {BigInteger} A BigInteger result of non-implication operation.
          */
         andNot(a: BigInteger): BigInteger;
 
         /**
-         * (public) ~this
+         * (public) ~this.
+         *
+         * @return {BigInteger} An inverted BigInteger.
          */
         not(): BigInteger;
 
         /**
-         * (public) this << n
+         * (public) this << n.
+         *
+         * @param {number} n Shift amount in bits.
+         *
+         * @return {BigInteger} A BigInteger shifted left.
          */
         shiftLeft(n: number): BigInteger;
 
         /**
-         * (public) this >> n
+         * (public) this >> n.
+         *
+         * @param {number} n Shift amount in bits.
+         *
+         * @return {BigInteger} A BigInteger shifted right.
          */
         shiftRight(n: number): BigInteger;
 
         /**
          * (public) returns index of lowest 1-bit (or -1 if none)
+         *
+         * @return The lowest set bit.
          */
         getLowestSetBit(): number;
 
         /**
-         * (public) return number of set bits
+         * (public) return number of set bits.
+         *
+         * @return {number} A number of set bits.
          */
         bitCount(): number;
 
         /**
-         * (public) true iff nth bit is set
+         * (public) true if nth bit is set.
+         *
+         * @param {number} n The index of bit tot test.
+         *
+         * @return {boolean} true if the test passes, false if the test fails.
          */
         testBit(n: number): boolean;
 
         /**
          * (protected) this op (1<<n)
+         *
+         * @param {number} a    The index of bit to apply operation.
+         * @param {Function} op The bitwise operation function to apply.
+         *
+         * @return {BigInteger} A BigInteger with bit changed.
          */
         changeBit(n: number, op: (x: number, y: number) => number): BigInteger;
 
         /**
-         * (protected) this op (1<<n)
+         * (protected) this | (1<<n)
+         *
+         * @param {number} n The index of bit to set.
+         *
+         * @return {BigInteger} A BigInteger with bit set to 1.
          */
         setBit(n: number): BigInteger;
 
         /**
          * (public) this & ~(1<<n)
+         *
+         * @param {number} n The index of bit to clear.
+         *
+         * @return {BigInteger} A BigInteger with bit set to 0.
          */
-        clearBit(n: number): BigInteger
+        clearBit(n: number): BigInteger;
 
         /**
          * (public) this ^ (1<<n)
+         *
+         * @param {number} n The index of bit to flip.
+         *
+         * @return {BigInteger} A BigInteger with bit flipped.
          */
-        flipBit(n: number): BigInteger
+        flipBit(n: number): BigInteger;
 
         /**
          * (protected) r = this + a
