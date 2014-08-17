@@ -346,7 +346,7 @@ declare module jsbn {
         fromNumber(a: number, b: number, c: RandomGenerator): void;
 
         /**
-         * (public) convert to bigendian byte array.
+         * (public) convert to big-endian byte array.
          *
          * @return {number[]} This object as Array.
          */
