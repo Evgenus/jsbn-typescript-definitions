@@ -45,7 +45,7 @@ declare module jsbn {
          * @constructor implements new interface.
          *
          * @param {string} a The string representation of BigInteger.
-         * @param {number} b (Optional) the radix.
+         * @param {number=} b (Optional) the radix.
          */
         constructor(a: string, b?: number); //TODO
 
@@ -55,7 +55,7 @@ declare module jsbn {
          * @constructor implements new interface.
          *
          * @param {number[]} a Array of bytes.
-         * @param {number} b   (Optional) the radix.
+         * @param {number=} b   (Optional) the radix.
          */
         constructor(a: number[], b?: number);
 
@@ -122,7 +122,7 @@ declare module jsbn {
         /**
          * (public) return string representation in given radix.
          *
-         * @param {number} b (Optional) the radix.
+         * @param {number=} b (Optional) the radix.
          *
          * @return {string} A string that represents this object.
          */
