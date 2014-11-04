@@ -15,6 +15,14 @@ declare module jsbn {
         nextBytes(bytes: number[]): void;
     }
 
+    export interface BigIntegerFactory {
+        new (a: number, c: RandomGenerator): BigInteger;
+        new (a: number, b: number, c: RandomGenerator): BigInteger;
+        new (a: string, b?: number): BigInteger;
+        new (a: number[], b?: number): BigInteger;    
+        new (a: BigInteger): BigInteger;
+    }
+    
     export class BigInteger {
 
         /**
