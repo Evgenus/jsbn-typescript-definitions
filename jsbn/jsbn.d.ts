@@ -9,7 +9,7 @@
 /**
  * Basic JavaScript BN library - subset useful for RSA encryption.
  */
-declare module jsbn {
+declare module 'jsbn' {
 
     interface RandomGenerator {
         nextBytes(bytes: number[]): void;
